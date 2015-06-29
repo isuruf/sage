@@ -11,13 +11,17 @@ for patch in ../patches/*.patch; do
     fi
 done
 
+unset MACOSX_DEPLOYMENT_TARGET
+
 ./bootstrap --prefix=$SAGE_LOCAL \
     --system-bzip2 \
     --system-zlib \
+    --system-curl \
     -- \
     -DCMAKE_PREFIX_PATH=$SAGE_LOCAL/lib \
     -DBZIP2_INCLUDE_DIR=$SAGE_LOCAL/include \
     -DZLIB_INCLUDE_DIR=$SAGE_LOCAL/include \
+    -DCURL_INCLUDE_DIR=$SAGE_LOCAL/include \
     -DCMAKE_TESTS_CDASH_SERVER=NOTFOUND
 
 if [ $? -ne 0 ]; then

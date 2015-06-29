@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+cd src
+
+./configure --with-ssl=$SAGE_LOCAL --with-zlib=$SAGE_LOCAL --prefix=$SAGE_LOCAL
+if [ $? -ne 0 ]; then
+    echo >&2 "Error configuring Curl."
+    exit 1
+fi
+
+$MAKE install
+if [ $? -ne 0 ]; then
+    echo >&2 "Error installing Curl."
+    exit 1
+fi
