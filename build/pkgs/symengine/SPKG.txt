@@ -1,0 +1,25 @@
+= SymEngine =
+
+== Description ==
+
+SymEngine is a standalone fast C++ symbolic manipulation library.
+Optional thin Python wrappers allow easy usage from Python and
+integration with SymPy.
+
+Website: sympy.org
+
+== License ==
+
+SymEngine is distributed under MIT License. See LICENSE for
+more details
+
+== Upstream Contact ==
+
+ * SymPy mailing-list http://groups.google.com/group/sympy
+
+== Dependencies ==
+
+* cmake
+* gmp
+* mpfr
+* mpc

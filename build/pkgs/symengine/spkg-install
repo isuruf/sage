@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+cd src
+
+cmake -DCMAKE_INSTALL_PREFIX=$SAGE_LOCAL \
+    -DBUILD_SHARED_LIBS=yes \
+    -DCOMMON_DIR=$SAGE_LOCAL \
+    -DBUILD_BENCHMARKS=no \
+    -DWITH_PYTHON=yes \
+    -DWITH_MPC=yes \
+    .
+
+if [ $? -ne 0 ]; then
+    echo >&2 "Error configuring SymEngine."
+    exit 1
+fi
+
+$MAKE install
+if [ $? -ne 0 ]; then
+    echo >&2 "Error installing SymEngine."
+    exit 1
+fi
