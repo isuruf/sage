@@ -88,7 +88,7 @@ library_order_list = [
     "singular", "ec", "ecm",
     "linboxsage", "ntl", "iml", "linbox", "givaro",
     "gsl", "pari", "flint", "ratpoints", "ecl", "glpk", "ppl",
-    "arb", "mpfi", "mpfr", "mpc", "gmp", "gmpxx",
+    "symengine", "arb", "mpfi", "mpfr", "mpc", "gmp", "gmpxx",
     "polybori-" + polybori_major_version,
     "polybori_groebner-" + polybori_major_version,
     "m4rie", "m4ri",
@@ -1964,6 +1964,13 @@ ext_modules = [
 
     Extension('sage.symbolic.ring',
               sources = ['sage/symbolic/ring.pyx']),
+
+    OptionalExtension("sage.symbolic.symengine_conversions",
+                      ["sage/symbolic/symengine_conversions.pyx"],
+                      language = 'c++',
+                      extra_compile_args = ["-std=c++11"],
+                      libraries = ['symengine', 'mpc', 'mpfr', 'gmpxx', 'gmp'],
+                      package = 'symengine'),
 
     Extension('*', ['sage/symbolic/*.pyx']),
 
