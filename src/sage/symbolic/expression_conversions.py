@@ -761,6 +761,86 @@ class SympyConverter(Converter):
 sympy = SympyConverter()
 
 #############
+# SymEngine #
+#############
+class SymengineConverter(Converter):
+    """
+    Converts any expression to SymEngine.
+
+    """
+    def pyobject(self, ex, obj):
+        """
+        """
+        try:
+            return obj._symengine_()
+        except AttributeError:
+            return obj
+
+    def arithmetic(self, ex, operator):
+        """
+        EXAMPLES::
+
+            sage: from sage.symbolic.expression_conversions import SympyConverter
+            sage: s = SympyConverter()
+            sage: f = x + 2
+            sage: s.arithmetic(f, f.operator())
+            x + 2
+        """
+        import symengine
+        ops = [symengine.sympify(self(a)) for a in ex.operands()]
+
+        if operator is add_vararg:
+            operator = _operator.add
+        elif operator is mul_vararg:
+            operator = _operator.mul
+        try:
+            import reduce
+        except ImportError:
+            from functools import reduce
+        return reduce(operator, ops)
+
+    def symbol(self, ex):
+        """
+        EXAMPLES::
+
+            sage: from sage.symbolic.expression_conversions import SympyConverter
+            sage: s = SympyConverter()
+            sage: s.symbol(x)
+            x
+            sage: type(_)
+            <class 'sympy.core.symbol.Symbol'>
+        """
+        import symengine
+        return symengine.Symbol(repr(ex))
+
+    def composition(self, ex, operator):
+        """
+        EXAMPLES::
+
+            sage: from sage.symbolic.expression_conversions import SympyConverter
+            sage: s = SympyConverter()
+            sage: f = sin(2)
+            sage: s.composition(f, f.operator())
+            sin(2)
+            sage: type(_)
+            sin
+            sage: f = arcsin(2)
+            sage: s.composition(f, f.operator())
+            asin(2)
+        """
+        f = operator._symengine_init_()
+        g = ex.operands()
+        import symengine
+
+        f_symengine = getattr(symengine, f, None)
+        if f_symengine:
+            return f_symengine(*symengine.sympify(g))
+        else:
+            raise NotImplementedError("SymEngine function '%s' doesn't exist" % f)
+
+symengine_converter = SymengineConverter()
+
+#############
 # Algebraic #
 #############
 class AlgebraicConverter(Converter):

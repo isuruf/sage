@@ -641,6 +641,27 @@ cdef class Function(SageObject):
         """
         return self._conversions.get('sympy', self._name)
 
+    def _symengine_init_(self, I=None):
+        """
+        EXAMPLES::
+
+            sage: arcsin._symengine_init()
+            'asin'
+            sage: from sage.symbolic.function import SymbolicFunction
+            sage: g = SymbolicFunction('g', conversions=dict(symengine='gg'))
+            sage: g._symengine_()
+            'gg'
+            sage: g(x)._symengine_()
+            Traceback (most recent call last):
+            ...
+            NotImplementedError: SymEngine function 'gg' doesn't exist
+        """
+        name = self._conversions.get('symengine', self._name)
+        if name is not None:
+            return name
+        else:
+            return self._conversions.get('sympy', self._name)
+
     def _maxima_init_(self, I=None):
         """
         EXAMPLES::

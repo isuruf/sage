@@ -1344,6 +1344,21 @@ cdef class Expression(CommutativeRingElement):
         from sage.symbolic.expression_conversions import sympy
         return sympy(self)
 
+    def _symengine_(self):
+        """
+        Return a SymEngine version of this object.
+
+        EXAMPLES::
+
+            sage: pi._symengine_()
+            pi
+            sage: type(_)
+            <class 'symengine.lib.symengine_wrapper.Pi'>
+
+        """
+        from sage.symbolic.expression_conversions import symengine_converter
+        return symengine_converter(self)
+
     def _algebraic_(self, field):
         """
         Convert a symbolic expression to an algebraic number.

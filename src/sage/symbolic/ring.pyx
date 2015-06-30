@@ -150,6 +150,11 @@ cdef class SymbolicRing(CommutativeRing):
                 if issubclass(R, Basic):
                     return UnderscoreSageMorphism(R, self)
 
+            if 'symengine' in R.__module__:
+                from symengine import Basic
+                if issubclass(R, Basic):
+                    return UnderscoreSageMorphism(R, self)
+
             return False
         else:
             from sage.rings.real_mpfr import mpfr_prec_min

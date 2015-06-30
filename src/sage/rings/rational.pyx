@@ -825,6 +825,23 @@ cdef class Rational(sage.structure.element.FieldElement):
         import sympy
         return sympy.Rational(int(self.numerator()), int(self.denominator()))
 
+    def _symengine_(self):
+        """
+        Convert Sage ``Rational`` to SymEngine ``Rational``.
+
+        EXAMPLES::
+
+            sage: n = 1/2; n._symengine_()
+            1/2
+            sage: n = -1/5; n._symengine_()
+            -1/5
+            sage: from symengine import Symbol
+            sage: QQ(1)+Symbol('x')*QQ(2)
+            2*x + 1
+        """
+        from sage.symbolic.symengine_conversions import convert_from_rational
+        return convert_from_rational(self)
+
     def _magma_init_(self, magma):
         """
         Return the magma representation of ``self``.

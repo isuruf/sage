@@ -2228,6 +2228,16 @@ cdef class RealNumber(sage.structure.element.RingElement):
         import sympy
         return sympy.simplify(float(self))
 
+    def _symengine_(self):
+        """
+        Return a symengine object of ``self``.
+
+        EXAMPLES:
+
+        """
+        from sage.symbolic.symengine_conversions import convert_from_real_number
+        return convert_from_real_number(self)
+
     cpdef RingElement _mul_(self, RingElement right):
         """
         Multiply two real numbers with the same parent.

@@ -1559,6 +1559,16 @@ cdef class MPComplexNumber(sage.structure.element.FieldElement):
 
         return z
 
+    def _symengine_(self):
+        """
+        Return a symengine object of ``self``.
+
+        EXAMPLES:
+
+        """
+        from sage.symbolic.symengine_conversions import convert_from_mpcomplex_number
+        return convert_from_mpcomplex_number(self)
+
     ################################
     # Trigonometric & hyperbolic functions
     ################################

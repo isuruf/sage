@@ -599,6 +599,19 @@ class Pi(Constant):
         import sympy
         return sympy.pi
 
+    def _symengine_(self):
+        """
+        Converts pi to symengine pi.
+
+        EXAMPLES::
+
+            sage: import sympy
+            sage: symengine.pi == pi # optional indirect doctest
+            True
+        """
+        import symengine
+        return symengine.pi
+
 pi = Pi().expression()
 
 """

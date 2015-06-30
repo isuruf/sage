@@ -992,6 +992,20 @@ cdef class Integer(sage.structure.element.EuclideanDomainElement):
         import sympy
         return sympy.sympify(int(self))
 
+    def _symengine_(self):
+        """
+        Convert Sage Integer() to SymEngine Integer.
+
+        EXAMPLES::
+
+            sage: n = 5; n._symengine_() # optional - symengine
+            5
+            sage: n = -5; n._symengine_() # optional - symengine
+            -5
+        """
+        from sage.symbolic.symengine_conversions import convert_from_integer
+        return convert_from_integer(self)
+
     def _mathml_(self):
         """
         Return mathml representation of this integer.
