@@ -1,6 +1,9 @@
-#!/usr/bin/env python
-
 import os
+import subprocess
+
+sage_root = os.path.dirname(os.path.realpath(__file__))
+sage_local = os.path.join(sage_root, "local")
+pkg_dir=os.path.join(sage_root, "build/pkgs")
 
 conda_pkgs = {
 'alabaster' : 'alabaster',
@@ -101,7 +104,7 @@ deps_dict = {
 'sageruntime' : sageruntime_deps,
 }
 
-def main()
+def main():
     pkg_dir="build/pkgs"
     dirs = sorted([d for d in os.listdir(pkg_dir) if os.path.isdir(os.path.join(pkg_dir, d))])
     for pkg in dirs:
@@ -109,8 +112,12 @@ def main()
             continue
         conda_file = os.path.join(pkg_dir, pkg, "conda-name")    
         with open(conda_file, 'w') as f:
-            f.write(conda_pkgs[pkg])
+            f.write(conda_pkgs[pkg].split("=")[0])
 
-if __name__ == "__main__"
+    subprocess.call("conda install %s -c conda-forge -c r -p %s" % (' '.join(conda_pkgs.values()), sage_local), shell=True)
+    # create pc files for openblas
+    subprocess.call("export SAGE_LOCAL=%s && cd %s/build/pkgs/openblas && ./write_pc_file.py" % (sage_local, sage_root), shell=True)
+
+if __name__ == "__main__":
     main()
 
