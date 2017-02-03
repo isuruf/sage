@@ -2829,7 +2829,6 @@ lib/python2.7/site-packages/sage/combinat/root_system/root_lattice_realization_a
 lib/python2.7/site-packages/sage/misc/lazy_string.pxd
 lib/python2.7/site-packages/sage/matrix/matrix0.pxd
 lib/python2.7/site-packages/sage/libs/ntl/ntl_GF2E.pxd
-share/jupyter/kernels/sagemath/doc
 lib/python2.7/site-packages/sage/libs/symmetrica/sc.pxi
 lib/python2.7/site-packages/sage/categories/additive_monoids.py
 lib/python2.7/site-packages/sage/combinat/root_system/type_D.py
