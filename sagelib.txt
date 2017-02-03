@@ -1515,7 +1515,6 @@ lib/python2.7/site-packages/sage/plot/plot3d/list_plot3d.py
 lib/python2.7/site-packages/sage/rings/padics/padic_ZZ_pX_element.pxd
 lib/python2.7/site-packages/sage/schemes/elliptic_curves/__init__.py
 lib/python2.7/site-packages/sage/game_theory/matching_game.py
-share/jupyter/nbextensions/mathjax
 lib/python2.7/site-packages/sage/crypto/cipher.py
 lib/python2.7/site-packages/sage/homology/simplicial_complex.py
 lib/python2.7/site-packages/sage/groups/perm_gps/symgp_conjugacy_class.py
