@@ -66,6 +66,8 @@ def get_deps(pkg):
 
 
 def get_version(pkg):
+    if pkg == "sagelib" or pkg =="sageruntime":
+        return "7.5.1"
     ver_file = os.path.join(pkg_dir, pkg, "package-version.txt")
     with open(ver_file) as f:
         return f.readlines()[0].strip()
