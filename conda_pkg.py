@@ -45,6 +45,7 @@ conda_pkgs = {
 'jupyter_core' : 'jupyter_core',
 'libgd' : 'libgd',
 'libpng' : 'libpng',
+'markupsafe' : 'markupsafe',
 'matplotlib' : 'matplotlib',
 'mistune' : 'mistune',
 'mpc' : 'mpc',
@@ -98,7 +99,7 @@ conda_pkgs = {
 
 sagelib_deps = ['arb', 'openblas', 'brial', 'cephes', 'cliquer', 'cysignals', 'cython', 'ecl', 'eclib', 'ecm', 'flint', 'libgd', 'givaro', 'glpk', 'gsl', 'iml', 'jinja2', 'jupyter_core', 'lcalc', 'lrcalc', 'libgap', 'libpng', 'linbox', 'm4ri', 'm4rie', 'mpc', 'mpfi', 'mpfr', 'gmp', 'ntl', 'numpy', 'pari', 'pip', 'pkgconfig', 'planarity', 'ppl', 'pynac', 'python', 'ratpoints', 'readline', 'rw', 'singular', 'six', 'symmetrica', 'zn_poly']
 
-sageruntime_deps = sagelib_deps + ['ipython', 'pexpect', 'psutil']
+sageruntime_deps = ['sagelib', 'ipython', 'pexpect', 'psutil']
 
 deps_dict = {
 'sageruntime' : sageruntime_deps,
@@ -114,7 +115,8 @@ def main():
         with open(conda_file, 'w') as f:
             f.write(conda_pkgs[pkg].split("=")[0])
 
-    subprocess.call("conda install %s -c conda-forge -c r -p %s" % (' '.join(conda_pkgs.values()), sage_local), shell=True)
+    subprocess.call("mkdir -p %s" % sage_local)
+    subprocess.call("conda install %s autoconf automake -c conda-forge -c r -p %s" % (' '.join(conda_pkgs.values()), sage_local), shell=True)
     # create pc files for openblas
     subprocess.call("export SAGE_LOCAL=%s && cd %s/build/pkgs/openblas && ./write_pc_file.py" % (sage_local, sage_root), shell=True)
 

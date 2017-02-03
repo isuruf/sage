@@ -29,8 +29,22 @@ def load_file_list(pkg, file_name):
     with open(file_name) as f:
         return [i.strip() for i in f.readlines()]
 
+def convert_deps(dep_list):
+    run_deps = []
+    for i in range(len(dep_list)):
+        d = dep_list[i]
+        d = conda_pkgs.get(d, d)
+        if '=' in d:
+            d = d.split("=")[0]
+        if d not in ["pkgconf", "m4", "perl", "patch", "pkgconfig", "automake", "pip", "setuptools", "cython"]:
+            run_deps.append(d)
+    return run_deps
 
 def get_deps(pkg):
+    if pkg == "sagelib":
+        return convert_deps(sagelib_deps) + ["pip", "setuptools", "cython"]
+    if pkg == "sageruntime":
+        return convert_deps(sageruntime_deps)
     deps_file = os.path.join(pkg_dir, pkg, "dependencies")
     if not os.path.exists(deps_file):
         return []
@@ -47,13 +61,7 @@ def get_deps(pkg):
         deps = deps.replace("$(SAGERUNTIME)", "sageruntime")
         deps = deps.replace("$(INST)/", "")
         deps = deps.split()
-        for i in range(len(deps)):
-            d = deps[i]
-            d = conda_pkgs.get(d, d)
-            if '=' in d:
-                d = d.split("=")[0]
-            deps[i] = d
-        return deps
+        return convert_deps(deps)
     return []
 
 
