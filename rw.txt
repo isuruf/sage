@@ -1,0 +1,9 @@
+lib/librw.a
+lib/librw.so
+share/doc/rw/grid
+include/rw.h
+lib/librw.so.0.0.0
+share/doc/rw/igrid
+lib/librw.so.0
+share/doc/rw/Hängematte
+share/doc/rw/README

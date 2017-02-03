@@ -1,0 +1,2 @@
+bin/pkgconf
+share/man/man1/pkgconf.1
