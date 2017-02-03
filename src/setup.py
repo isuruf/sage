@@ -409,6 +409,7 @@ class sage_build_ext(build_ext):
                 'fast_getattr': True,
                 'profile': profile,
             },
+            include_path=sys.path,
             # Debugging
             gdb_debug=debug,
             output_dir=SAGE_CYTHONIZED,
