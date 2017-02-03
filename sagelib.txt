@@ -24,7 +24,6 @@ lib/python2.7/site-packages/sage/databases/all.py
 lib/python2.7/site-packages/sage/repl/display/formatter.py
 lib/python2.7/site-packages/sage/combinat/core.py
 lib/python2.7/site-packages/sage/matrix/matrix_modn_dense_template.pxi
-share/jupyter/nbextensions/jsmol
 lib/python2.7/site-packages/sage/libs/ntl/GF2.pxd
 lib/python2.7/site-packages/sage/repl/rich_output/buffer.py
 lib/python2.7/site-packages/sage/modular/overconvergent/all.py
