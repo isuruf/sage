@@ -92,6 +92,7 @@ conda_pkgs = {
 'traitlets' : 'traitlets',
 'vcversioner' : 'vcversioner',
 'wcwidth' : 'wcwidth',
+'widgetsnbextension' : 'widgetsnbextension'
 'werkzeug' : 'werkzeug',
 'zeromq' : 'zeromq',
 'zlib' : 'zlib'
@@ -143,12 +144,14 @@ pinnings = {
 'zlib': 'zlib 1.2.*',
 }
 
-pinnings["numpy"] = "numpy 1.11"
-pinnings["blas"] = "blas 1.11 openblas"
+pinnings["numpy"] = "numpy 1.11.*"
+pinnings["blas"] = "blas 1.1 openblas"
 
 sagelib_deps = ['arb', 'openblas', 'brial', 'cephes', 'cliquer', 'cysignals', 'cython', 'ecl', 'eclib', 'ecm', 'flint', 'libgd', 'givaro', 'glpk', 'gsl', 'iml', 'jinja2', 'jupyter_core', 'lcalc', 'lrcalc', 'libgap', 'libpng', 'linbox', 'm4ri', 'm4rie', 'mpc', 'mpfi', 'mpfr', 'gmp', 'ntl', 'numpy', 'pari', 'pip', 'pkgconfig', 'planarity', 'ppl', 'pynac', 'python', 'ratpoints', 'readline', 'rw', 'singular', 'six', 'symmetrica', 'zn_poly']
 
 sageruntime_deps = ['sagelib', 'ipython', 'pexpect', 'psutil']
+
+sagestandard_deps = ['alabaster ' 'appnope ' 'arb ' 'babel ' 'backports_abc ' 'backports_shutil_get_terminal_size ' 'backports_ssl_match_hostname ' 'boost_cropped ' 'brial ' 'bzip2 ' 'cddlib ' 'cephes ' 'certifi ' 'cliquer ' 'combinatorial_designs ' 'configparser ' 'conway_polynomials ' 'cvxopt ' 'cycler ' 'cysignals ' 'cython ' 'dateutil ' 'decorator ' 'docutils ' 'ecl ' 'eclib ' 'ecm ' 'elliptic_curves ' 'entrypoints ' 'fflas_ffpack ' 'flask ' 'flask_autoindex ' 'flask_babel ' 'flask_oldsessions ' 'flask_openid ' 'flask_silk ' 'flint ' 'flintqs ' 'fpylll ' 'freetype ' 'functools32 ' 'future ' 'gap ' 'gc ' 'gcc ' 'gf2x ' 'gfan ' 'giac ' 'git ' 'givaro ' 'glpk ' 'graphs ' 'gsl ' 'iconv ' 'imagesize ' 'iml ' 'ipykernel ' 'ipython ' 'ipython_genutils ' 'ipywidgets ' 'itsdangerous ' 'jinja2 ' 'jmol ' 'jsonschema ' 'jupyter_client ' 'jupyter_core ' 'lcalc ' 'libfplll ' 'libgap ' 'libgd ' 'libpng ' 'linbox ' 'lrcalc ' 'm4ri ' 'm4rie ' 'markupsafe ' 'mathjax ' 'matplotlib ' 'maxima ' 'mistune ' 'mpc ' 'mpfi ' 'mpfr ' 'mpmath ' 'nauty ' 'nbconvert ' 'nbformat ' 'ncurses ' 'networkx ' 'notebook ' 'ntl ' 'numpy ' 'openblas ' 'palp ' 'pari ' 'pari_galdata ' 'pari_seadata_small ' 'patch ' 'pathlib2 ' 'pathpy ' 'pexpect ' 'pickleshare ' 'pillow ' 'pip ' 'pkgconf ' 'pkgconfig ' 'planarity ' 'polytopes_db ' 'ppl ' 'prompt_toolkit ' 'psutil ' 'ptyprocess ' 'pycrypto ' 'pygments ' 'pynac ' 'pyparsing ' 'python_openid ' 'pytz ' 'pyzmq ' 'r ' 'ratpoints ' 'readline ' 'rpy2 ' 'rubiks ' 'rw ' 'sagenb ' 'sagenb_export ' 'sagetex ' 'scipy ' 'setuptools ' 'setuptools_scm ' 'simplegeneric ' 'singledispatch ' 'singular ' 'six ' 'snowballstemmer ' 'speaklater ' 'sphinx ' 'sqlite ' 'symmetrica ' 'sympow ' 'sympy ' 'tachyon ' 'terminado ' 'thebe ' 'tornado ' 'traitlets ' 'twisted ' 'vcversioner ' 'wcwidth ' 'werkzeug ' 'widgetsnbextension ' 'zeromq ' 'zlib ' 'zn_poly ' 'zope_interface']
 
 deps_dict = {
 'sageruntime' : sageruntime_deps,

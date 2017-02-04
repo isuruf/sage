@@ -86,6 +86,13 @@ requirements:
 %s
 """
         reqs = reqs_str % (reqs)
+
+    if "openblas" in deps:
+        features = """
+  features:
+    - blas_openblas
+"""
+        reqs = features + reqs
     
     meta_yaml = """
 {%% set name = "%s" %%}
@@ -99,7 +106,7 @@ package:
 build:
   number: 0
   script:
-    - for file in $(cat {{ sage_root }}/{{ name }}.txt); do mkdir -p `dirname "$PREFIX/$file"` && cp "{{ sage_root }}/local/$file" "$PREFIX/$file"; done
+    - python conda_build_script.py {{ sage_root }} {{ name }}
 %s
 
 about:
