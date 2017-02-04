@@ -7,7 +7,7 @@ pkg_dir=os.path.join(sage_root, "build/pkgs")
 
 conda_pkgs = {
 'alabaster' : 'alabaster',
-'arb' : 'arb',
+#'arb' : 'arb',
 'babel' : 'babel',
 'backports_abc' : 'backports_abc',
 'backports_shutil_get_terminal_size' : 'backports.shutil_get_terminal_size',
@@ -24,7 +24,7 @@ conda_pkgs = {
 'flask' : 'flask',
 'flask_babel' : 'flask-babel',
 'flask_openid' : 'flask-openid',
-'flint' : 'libflint',
+#'flint' : 'libflint',
 'freetype' : 'freetype',
 'functools32' : 'functools32',
 'future' : 'future',

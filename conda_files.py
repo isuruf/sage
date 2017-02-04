@@ -66,7 +66,7 @@ def get_deps(pkg):
 
 
 def get_version(pkg):
-    if pkg == "sagelib" or pkg =="sageruntime":
+    if pkg == "sagelib" or pkg =="sageruntime" or pkg=="sage":
         return "7.5.1"
     ver_file = os.path.join(pkg_dir, pkg, "package-version.txt")
     with open(ver_file) as f:
@@ -112,26 +112,27 @@ about:
     with open(os.path.join(sage_root, "recipes", pkg, "meta.yaml"), "w") as f:
         f.write(meta_yaml % (pkg, get_version(pkg), sage_root, reqs))
 
-    shell_cmd = "cd %s && conda build %s --python 2.7"
-    shell_cmd = shell_cmd % (os.path.join(sage_root, "recipes"), pkg) 
-    subprocess.call(shell_cmd, shell=True)
+    #shell_cmd = "cd %s && conda build %s --python 2.7"
+    #shell_cmd = shell_cmd % (os.path.join(sage_root, "recipes"), pkg) 
+    #subprocess.call(shell_cmd, shell=True)
 
-    with open(os.path.join(pkg_dir, pkg, "conda-name"), "w") as f:
-        f.write("%s\n" % pkg)
+    #with open(os.path.join(pkg_dir, pkg, "conda-name"), "w") as f:
+    #    f.write("%s\n" % pkg)
 
 def main():
+    #return
     pkg = sys.argv[1]
     before = sys.argv[2] == "before"
-    file_list = get_files()
-    file_name = os.path.join(sage_root, "before.txt")
+    #file_list = get_files()
+    #file_name = os.path.join(sage_root, "before.txt")
     if before:
-        #pass
-        save_file_list(pkg, file_list, file_name)
+        pass
+        #save_file_list(pkg, file_list, file_name)
     else:
-        before_list = set(load_file_list(pkg, file_name))
-        file_list = [os.path.join(prefix, f) for f in (set(file_list) - before_list)]
-        save_file_list(pkg, file_list, os.path.join(sage_root, "%s.txt" % pkg))
-        #file_list = load_file_list(pkg, os.path.join(sage_root, "%s.txt" % pkg))
+        #before_list = set(load_file_list(pkg, file_name))
+        #file_list = [os.path.join(prefix, f) for f in (set(file_list) - before_list)]
+        #save_file_list(pkg, file_list, os.path.join(sage_root, "%s.txt" % pkg))
+        file_list = load_file_list(pkg, os.path.join(sage_root, "%s.txt" % pkg))
         build_conda_pkg(pkg, file_list)
 
 if __name__ == "__main__":
