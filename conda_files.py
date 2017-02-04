@@ -119,8 +119,8 @@ about:
     with open(os.path.join(sage_root, "recipes", pkg, "meta.yaml"), "w") as f:
         f.write(meta_yaml % (pkg, get_version(pkg), sage_root, reqs))
 
-    shell_cmd = "cd %s && conda build %s --python 2.7 && conda install %s --use-local -p %s"
-    shell_cmd = shell_cmd % (os.path.join(sage_root, "recipes"), pkg, pkg, sage_local) 
+    shell_cmd = "cd %s && conda build %s --python 2.7"
+    shell_cmd = shell_cmd % (os.path.join(sage_root, "recipes"), pkg) 
     subprocess.call(shell_cmd, shell=True)
 
     with open(os.path.join(pkg_dir, pkg, "conda-name"), "w") as f:
@@ -132,11 +132,13 @@ def main():
     file_list = get_files()
     file_name = os.path.join(sage_root, "before.txt")
     if before:
+        #pass
         save_file_list(pkg, file_list, file_name)
     else:
         before_list = set(load_file_list(pkg, file_name))
         file_list = [os.path.join(prefix, f) for f in (set(file_list) - before_list)]
         save_file_list(pkg, file_list, os.path.join(sage_root, "%s.txt" % pkg))
+        #file_list = load_file_list(pkg, os.path.join(sage_root, "%s.txt" % pkg))
         build_conda_pkg(pkg, file_list)
 
 if __name__ == "__main__":
