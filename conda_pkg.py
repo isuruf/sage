@@ -4,6 +4,7 @@ import subprocess
 sage_root = os.path.dirname(os.path.realpath(__file__))
 sage_local = os.path.join(sage_root, "local")
 pkg_dir=os.path.join(sage_root, "build/pkgs")
+sage_version="7.5.1"
 
 conda_pkgs = {
 'alabaster' : 'alabaster',
@@ -168,6 +169,7 @@ def main():
             f.write(conda_pkgs[pkg].split("=")[0])
 
     subprocess.call("mkdir -p %s" % sage_local, shell=True)
+    subprocess.call("cp sage local/sage", shell=True)
     subprocess.call("conda install %s autoconf automake -c conda-forge -c r -p %s" % (' '.join(conda_pkgs.values()), sage_local), shell=True)
     # create pc files for openblas
     subprocess.call("export SAGE_LOCAL=%s && cd %s/build/pkgs/openblas && ./write_pc_file.py" % (sage_local, sage_root), shell=True)
