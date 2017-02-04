@@ -616,3 +616,4 @@ lib/python2.7/site-packages/sagenb/data/tiny_mce/themes/advanced/skins/default/u
 lib/python2.7/site-packages/sagenb/data/tiny_mce/plugins/inlinepopups/editor_plugin_src.js
 lib/python2.7/site-packages/sagenb/data/tiny_mce/plugins/style/js/props.js
 lib/python2.7/site-packages/sagenb/misc/misc.py
+lib/python2.7/site-packages/sagenb/data/mathjax
