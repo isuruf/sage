@@ -17,7 +17,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # let sagenb use mathjax
-cd "${SAGE_LOCAL}/lib/python/site-packages/sagenb/data"
+cd "${SAGE_LOCAL}/lib/python2.7/site-packages/sagenb/data"
 if [ $? -ne 0 ]; then
     echo >&2 "Error: Cannot find SageNB data directory."
     exit 1

@@ -2,7 +2,7 @@ import os
 import sys
 import subprocess
 
-from conda_pkg import conda_pkgs, sagelib_deps, sageruntime_deps
+from conda_pkg import conda_pkgs, sagelib_deps, sageruntime_deps, pinnings
 
 sage_root = os.path.dirname(os.path.realpath(__file__))
 sage_local = os.path.join(sage_root, "local")
@@ -57,7 +57,7 @@ def get_deps(pkg):
         deps = deps.replace("| ", "")
         deps = deps.replace("$(MP_LIBRARY)", "gmp")
         deps = deps.replace("$(SAGE_MP_LIBRARY)", "gmp")
-        deps = deps.replace("$(BLAS)", "openblas")
+        deps = deps.replace("$(BLAS)", "openblas blas")
         deps = deps.replace("$(SAGERUNTIME)", "sageruntime")
         deps = deps.replace("$(INST)/", "")
         deps = deps.split()
@@ -77,17 +77,15 @@ def build_conda_pkg(pkg, file_list):
     deps = get_deps(pkg)
     reqs = ""
     for dep in deps:
-        reqs += "    - %s \n" % dep
-    
+        reqs += "    - %s \n" % pinnings.get(dep, dep)
+
     if reqs != "":
         reqs_str = """
 requirements:
-  build:
-%s
   run:
 %s
 """
-        reqs = reqs_str % (reqs, reqs)
+        reqs = reqs_str % (reqs)
     
     meta_yaml = """
 {%% set name = "%s" %%}
@@ -102,8 +100,11 @@ build:
   number: 0
   script:
     - for file in $(cat {{ sage_root }}/{{ name }}.txt); do mkdir -p `dirname "$PREFIX/$file"` && cp "{{ sage_root }}/local/$file" "$PREFIX/$file"; done
-
 %s
+
+about:
+  description: |
+    {{ name }} packaged for sagemath. Download sage-spkg-sources for the source
 """;
     
     subprocess.call("mkdir -p %s" % os.path.join(sage_root, "recipes", pkg), shell=True)
