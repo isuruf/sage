@@ -93,7 +93,7 @@ conda_pkgs = {
 'traitlets' : 'traitlets',
 'vcversioner' : 'vcversioner',
 'wcwidth' : 'wcwidth',
-'widgetsnbextension' : 'widgetsnbextension'
+'widgetsnbextension' : 'widgetsnbextension',
 'werkzeug' : 'werkzeug',
 'zeromq' : 'zeromq',
 'zlib' : 'zlib'
