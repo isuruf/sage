@@ -97,6 +97,55 @@ conda_pkgs = {
 'zlib' : 'zlib'
 }
 
+features = { "openblas" : "blas_openblas" }
+
+# copied from https://github.com/conda-forge/conda-forge.github.io/blob/master/scripts/pin_the_slow_way.py
+pinnings = {
+'boost': 'boost 1.63.*',
+'boost-cpp': 'boost-cpp 1.63.*',
+'bzip2': 'bzip2 1.0.*',
+'cairo': 'cairo 1.14.*',
+'ffmpeg': 'ffmpeg 2.8.*',
+'fontconfig': 'fontconfig 2.12.*',
+'freetype': 'freetype 2.7|2.7.*',
+'geos': 'geos 3.5.*',
+'giflib': 'giflib 5.1.*',
+'glib': 'glib 2.51.*',
+'harfbuzz': 'harfbuzz 1.3.*',
+'hdf5': 'hdf5 1.8.17|1.8.17.*',
+'icu': 'icu 58.*',
+'jpeg': 'jpeg 9*',
+'libblitz': 'libblitz 0.10|0.10.*',
+'libevent': 'libevent 2.0.*',
+'libmatio': 'libmatio 1.5.*',
+'libnetcdf': 'libnetcdf 4.4.*',
+'libpng': 'libpng >=1.6.28,<1.7',
+'libsvm': 'libsvm 3.21|3.21.*',
+'libtiff': 'libtiff 4.0.*',
+'libxml2': 'libxml2 2.9.*',
+'metis': 'metis 5.1.*',
+'ncurses': 'ncurses 5.9*',
+'netcdf-cxx4': 'netcdf-cxx4 4.3.*',
+'netcdf-fortran': 'netcdf-fortran 4.4.*',
+'openblas': 'openblas 0.2.19|0.2.19.*',
+'openssl': 'openssl 1.0.*',
+'pango': 'pango 1.40.*',
+'pixman': 'pixman 0.34.*',
+'proj4': 'proj4 4.9.3',
+'pyqt': 'pyqt 4.11.*',
+'qt': 'qt 4.8.*',
+'readline': 'readline 6.2*',
+'sox': 'sox 14.4.2',
+'sqlite': 'sqlite 3.13.*',
+'tk': 'tk 8.5.*',
+'vlfeat': 'vlfeat 0.9.20',
+'xz': 'xz 5.2.*',
+'zlib': 'zlib 1.2.*',
+}
+
+pinnings["numpy"] = "numpy 1.11"
+pinnings["blas"] = "blas 1.11 openblas"
+
 sagelib_deps = ['arb', 'openblas', 'brial', 'cephes', 'cliquer', 'cysignals', 'cython', 'ecl', 'eclib', 'ecm', 'flint', 'libgd', 'givaro', 'glpk', 'gsl', 'iml', 'jinja2', 'jupyter_core', 'lcalc', 'lrcalc', 'libgap', 'libpng', 'linbox', 'm4ri', 'm4rie', 'mpc', 'mpfi', 'mpfr', 'gmp', 'ntl', 'numpy', 'pari', 'pip', 'pkgconfig', 'planarity', 'ppl', 'pynac', 'python', 'ratpoints', 'readline', 'rw', 'singular', 'six', 'symmetrica', 'zn_poly']
 
 sageruntime_deps = ['sagelib', 'ipython', 'pexpect', 'psutil']
