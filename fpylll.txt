@@ -1,15 +1,12 @@
 lib/python2.7/site-packages/fpylll/algorithms/simple_dbkz.py
 lib/python2.7/site-packages/fpylll/fplll/wrapper.so
 lib/python2.7/site-packages/fpylll/algorithms/__init__.py
-lib/python2.7/site-packages/fpylll-0.2.3.dev0-py2.7.egg-info/SOURCES.txt
 lib/python2.7/site-packages/fpylll/fplll/integer_matrix.so
 lib/python2.7/site-packages/fpylll/numpy.so
 lib/python2.7/site-packages/fpylll/algorithms/simple_bkz.py
 lib/python2.7/site-packages/fpylll/gmp/__init__.py
 lib/python2.7/site-packages/fpylll/tools/benchmark.py
-lib/python2.7/site-packages/fpylll-0.2.3.dev0-py2.7.egg-info/installed-files.txt
 lib/python2.7/site-packages/fpylll/algorithms/bkz.py
-lib/python2.7/site-packages/fpylll-0.2.3.dev0-py2.7.egg-info/top_level.txt
 lib/python2.7/site-packages/fpylll/fplll/bkz_param.so
 lib/python2.7/site-packages/fpylll/io.so
 lib/python2.7/site-packages/fpylll/algorithms/bkz2.py
@@ -18,11 +15,9 @@ lib/python2.7/site-packages/fpylll/fplll/lll.so
 lib/python2.7/site-packages/fpylll/fplll/gso.so
 lib/python2.7/site-packages/fpylll/fplll/svpcvp.so
 lib/python2.7/site-packages/fpylll/config.so
-lib/python2.7/site-packages/fpylll-0.2.3.dev0-py2.7.egg-info/dependency_links.txt
 lib/python2.7/site-packages/fpylll/tools/__init__.py
 lib/python2.7/site-packages/fpylll/algorithms/bkz_stats.py
 lib/python2.7/site-packages/fpylll/fplll/__init__.py
-lib/python2.7/site-packages/fpylll-0.2.3.dev0-py2.7.egg-info/PKG-INFO
 lib/python2.7/site-packages/fpylll/gmp/pylong.so
 lib/python2.7/site-packages/fpylll/fplll/bkz.so
 lib/python2.7/site-packages/fpylll/fplll/pruner.so
