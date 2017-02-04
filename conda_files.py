@@ -45,6 +45,8 @@ def get_deps(pkg):
         return convert_deps(sagelib_deps) + ["pip", "setuptools", "cython"]
     if pkg == "sageruntime":
         return convert_deps(sageruntime_deps)
+    if pkg == "sage":
+        return convert_deps(sagestandard_deps) + ["sageruntime", "sagelib"]
     deps_file = os.path.join(pkg_dir, pkg, "dependencies")
     if not os.path.exists(deps_file):
         return []
@@ -66,7 +68,7 @@ def get_deps(pkg):
 
 
 def get_version(pkg):
-    if pkg == "sagelib" or pkg =="sageruntime" or pkg=="sage":
+    if pkg == "sagelib" or pkg =="sageruntime" or pkg == "sage":
         return "7.5.1"
     ver_file = os.path.join(pkg_dir, pkg, "package-version.txt")
     with open(ver_file) as f:
@@ -106,18 +108,19 @@ package:
 build:
   number: 0
   script:
-    - python conda_build_script.py {{ sage_root }} {{ name }}
+    - python {{ sage_root }}/conda_build_script.py {{ sage_root }} {{ name }}
 %s
 
 about:
   description: |
     {{ name }} packaged for sagemath. Download sage-spkg-sources for the source
-""";
+"""
+    meta_yaml = meta_yaml % (pkg, get_version(pkg), sage_root, reqs)
     
     subprocess.call("mkdir -p %s" % os.path.join(sage_root, "recipes", pkg), shell=True)
 
     with open(os.path.join(sage_root, "recipes", pkg, "meta.yaml"), "w") as f:
-        f.write(meta_yaml % (pkg, get_version(pkg), sage_root, reqs))
+        f.write(meta_yaml)
 
     #shell_cmd = "cd %s && conda build %s --python 2.7"
     #shell_cmd = shell_cmd % (os.path.join(sage_root, "recipes"), pkg) 
