@@ -29,7 +29,7 @@ conda_pkgs = {
 'functools32' : 'functools32',
 'future' : 'future',
 'gc' : 'bdw-gc',
-'gcc' : 'gcc',
+'gcc' : 'gmp',
 'git' : 'git',
 'glpk' : 'glpk',
 'gsl' : 'gsl',
@@ -164,7 +164,7 @@ def main():
         with open(conda_file, 'w') as f:
             f.write(conda_pkgs[pkg].split("=")[0])
 
-    subprocess.call("mkdir -p %s" % sage_local)
+    subprocess.call("mkdir -p %s" % sage_local, shell=True)
     subprocess.call("conda install %s autoconf automake -c conda-forge -c r -p %s" % (' '.join(conda_pkgs.values()), sage_local), shell=True)
     # create pc files for openblas
     subprocess.call("export SAGE_LOCAL=%s && cd %s/build/pkgs/openblas && ./write_pc_file.py" % (sage_local, sage_root), shell=True)
