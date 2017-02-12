@@ -1,1 +1,0 @@
-share/combinatorial_designs/MOLS_table.txt

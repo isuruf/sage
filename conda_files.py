@@ -136,6 +136,7 @@ def main():
     #file_list = get_files()
     #file_name = os.path.join(sage_root, "before.txt")
     if before:
+        print(get_deps(pkg))
         pass
         #save_file_list(pkg, file_list, file_name)
     else:

@@ -1,6 +1,0 @@
-lib/python2.7/site-packages/giacpy_sage-0.6-py2.7.egg-info/SOURCES.txt
-lib/python2.7/site-packages/giacpy_sage-0.6-py2.7.egg-info/installed-files.txt
-lib/python2.7/site-packages/giacpy_sage-0.6-py2.7.egg-info/dependency_links.txt
-lib/python2.7/site-packages/giacpy_sage.so
-lib/python2.7/site-packages/giacpy_sage-0.6-py2.7.egg-info/top_level.txt
-lib/python2.7/site-packages/giacpy_sage-0.6-py2.7.egg-info/PKG-INFO

@@ -1,1 +1,0 @@
-share/conway_polynomials/conway_polynomials.sobj

@@ -1,6 +1,0 @@
-bin/mcube
-bin/size222
-bin/cu2
-bin/dikcube
-bin/cubex
-bin/optimal

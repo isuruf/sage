@@ -1,2 +1,0 @@
-lib/libratpoints.a
-include/ratpoints.h

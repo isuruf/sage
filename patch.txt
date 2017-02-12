@@ -1,3 +1,0 @@
-share/man/man1/patch.1
-lib/R/share/Makevars.site
-bin/patch

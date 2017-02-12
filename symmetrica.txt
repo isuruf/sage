@@ -1,3 +1,0 @@
-include/symmetrica/def.h
-include/symmetrica/macro.h
-lib/libsymmetrica.a

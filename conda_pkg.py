@@ -8,10 +8,12 @@ sage_version="7.5.1"
 
 conda_pkgs = {
 'alabaster' : 'alabaster',
+'appnope' : 'appnope',
 #'arb' : 'arb',
 'babel' : 'babel',
 'backports_abc' : 'backports_abc',
 'backports_shutil_get_terminal_size' : 'backports.shutil_get_terminal_size',
+'backports_ssl_match_hostname', : 'ssl_match_hostname',
 'boost_cropped' : 'boost-cpp',
 'bzip2' : 'bzip2',
 'configparser' : 'configparser',
@@ -20,6 +22,7 @@ conda_pkgs = {
 'cython' : 'cython',
 'dateutil' : 'dateutil',
 'decorator' : 'decorator',
+'docutils' : 'docutils',
 'ecm' : 'ecm',
 'entrypoints' : 'entrypoints',
 'flask' : 'flask',
@@ -42,6 +45,7 @@ conda_pkgs = {
 'ipywidgets' : 'ipywidgets',
 'itsdangerous' : 'itsdangerous',
 'jinja2' : 'jinja2',
+'jsonschema' : 'jsonschema',
 'jupyter_client' : 'jupyter_client',
 'jupyter_core' : 'jupyter_core',
 'libgd' : 'libgd',
@@ -81,10 +85,12 @@ conda_pkgs = {
 'scipy' : 'scipy',
 'setuptools' : 'setuptools',
 'setuptools_scm' : 'setuptools_scm',
+'pathpy' : 'path.py',
 'simplegeneric' : 'simplegeneric',
 'singledispatch' : 'singledispatch',
 'six' : 'six',
 'snowballstemmer' : 'snowballstemmer',
+'speaklater' : 'speaklater',
 'sphinx' : 'sphinx',
 'sqlite' : 'sqlite',
 'sympy' : 'sympy',
@@ -147,6 +153,7 @@ pinnings = {
 
 pinnings["numpy"] = "numpy 1.11.*"
 pinnings["blas"] = "blas 1.1 openblas"
+pinnings["appnope"] = "appnope  # [osx]"
 
 sagelib_deps = ['arb', 'openblas', 'brial', 'cephes', 'cliquer', 'cysignals', 'cython', 'ecl', 'eclib', 'ecm', 'flint', 'libgd', 'givaro', 'glpk', 'gsl', 'iml', 'jinja2', 'jupyter_core', 'lcalc', 'lrcalc', 'libgap', 'libpng', 'linbox', 'm4ri', 'm4rie', 'mpc', 'mpfi', 'mpfr', 'gmp', 'ntl', 'numpy', 'pari', 'pip', 'pkgconfig', 'planarity', 'ppl', 'pynac', 'python', 'ratpoints', 'readline', 'rw', 'singular', 'six', 'symmetrica', 'zn_poly']
 
@@ -170,7 +177,7 @@ def main():
 
     subprocess.call("mkdir -p %s" % sage_local, shell=True)
     subprocess.call("cp sage local/sage", shell=True)
-    subprocess.call("conda install %s autoconf automake -c conda-forge -c r -p %s" % (' '.join(conda_pkgs.values()), sage_local), shell=True)
+    #subprocess.call("conda install %s autoconf automake -c conda-forge -c r -p %s" % (' '.join(conda_pkgs.values()), sage_local), shell=True)
     # create pc files for openblas
     subprocess.call("export SAGE_LOCAL=%s && cd %s/build/pkgs/openblas && ./write_pc_file.py" % (sage_local, sage_root), shell=True)
 

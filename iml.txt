@@ -1,7 +1,0 @@
-share/iml/libroutines
-share/iml/liblink
-lib/libiml.so.0.1.1
-lib/libiml.so
-include/iml.h
-lib/libiml.a
-lib/libiml.so.0
