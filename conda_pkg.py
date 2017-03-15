@@ -11,6 +11,7 @@ conda_pkgs = {
 'alabaster' : 'alabaster',
 'appnope' : '',
 'arb' : 'arb',
+'autotools' : 'automake libtool',
 'babel' : 'babel',
 'backports_abc' : 'backports_abc',
 'backports_shutil_get_terminal_size' : 'backports.shutil_get_terminal_size',
@@ -44,7 +45,7 @@ conda_pkgs = {
 'future' : 'future',
 'gap':'gap=4.8.3',
 'gc' : 'bdw-gc',
-'gcc' : '',
+'gcc' : 'gcc',
 'gf2x':'gf2x',
 'gfan':'gfan',
 'git' : 'git',
@@ -66,7 +67,7 @@ conda_pkgs = {
 'jupyter_core' : 'jupyter_core',
 'lcalc':'lcalc',
 'libfplll':'fplll',
-'libgap':'',
+'libgap':'libgap',
 'libgd' : 'libgd',
 'libpng' : 'libpng',
 'linbox':'linbox',
@@ -113,7 +114,7 @@ conda_pkgs = {
 'python_openid' : 'python-openid',
 'pytz' : 'pytz',
 'pyzmq' : 'pyzmq',
-'r' : '',
+'r' : 'r-base',
 'ratpoints':'ratpoints',
 'readline' : 'readline',
 'rw':'rw',
@@ -217,7 +218,7 @@ def main():
 
     subprocess.call("mkdir -p %s" % sage_local, shell=True)
     subprocess.call("cp sage local/sage", shell=True)
-    subprocess.call("conda install %s autoconf automake -c conda-forge -p %s" % (' '.join(conda_pkgs.values()), sage_local), shell=True)
+    subprocess.call("conda install %s -c conda-forge -p %s" % (' '.join(conda_pkgs.values()), sage_local), shell=True)
 
 if __name__ == "__main__":
     main()

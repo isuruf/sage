@@ -133,17 +133,17 @@ def main():
     #return
     pkg = sys.argv[1]
     before = sys.argv[2] == "before"
-    #file_list = get_files()
-    #file_name = os.path.join(sage_root, "before.txt")
+    file_list = get_files()
+    file_name = os.path.join(sage_root, "before.txt")
     if before:
-        print(get_deps(pkg))
-        pass
-        #save_file_list(pkg, file_list, file_name)
+        #print(get_deps(pkg))
+        #pass
+        save_file_list(pkg, file_list, file_name)
     else:
-        #before_list = set(load_file_list(pkg, file_name))
-        #file_list = [os.path.join(prefix, f) for f in (set(file_list) - before_list)]
-        #save_file_list(pkg, file_list, os.path.join(sage_root, "%s.txt" % pkg))
-        file_list = load_file_list(pkg, os.path.join(sage_root, "%s.txt" % pkg))
+        before_list = set(load_file_list(pkg, file_name))
+        file_list = [os.path.join(prefix, f) for f in (set(file_list) - before_list)]
+        save_file_list(pkg, file_list, os.path.join(sage_root, "%s.txt" % pkg))
+        #file_list = load_file_list(pkg, os.path.join(sage_root, "%s.txt" % pkg))
         build_conda_pkg(pkg, file_list)
 
 if __name__ == "__main__":
