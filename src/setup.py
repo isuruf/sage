@@ -412,6 +412,7 @@ class sage_build_ext(build_ext):
             # Debugging
             gdb_debug=debug,
             output_dir=SAGE_CYTHONIZED,
+            include_path=sys.path,
             # Disable Cython caching, which is currently too broken to
             # use reliably: http://trac.sagemath.org/ticket/17851
             cache=False,

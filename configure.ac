@@ -917,6 +917,7 @@ while read PKG_NAME PKG_VERSION PKG_VAR; do
     fi
     DEP_FILE="$SAGE_ROOT/build/pkgs/$PKG_NAME/dependencies"
     TYPE=`cat "$SAGE_ROOT/build/pkgs/$PKG_NAME/type"`
+    CONDA_FILE="$SAGE_ROOT/build/pkgs/$PKG_NAME/conda-pkg-name"
     if [ -f "$DEP_FILE" ]; then
         # DEPS is first line of $DEP_FILE with some modifications:
         # - start with a single space
@@ -961,9 +962,15 @@ while read PKG_NAME PKG_VERSION PKG_VAR; do
         echo >&7
     else
         # Normal Sage packages
-        echo >&7 "\$(INST)/$PKG_VERSION:$DEPS"
-        echo >&7 "	+\$(A""M_V_at)sage-logger -p '\$(SAGE_SPKG) $PKG_VERSION' '\$(SAGE_LOGS)/$PKG_VERSION.log'"
-        echo >&7
+        if [ -f "$CONDA_FILE" ]; then
+            CONDA_PKG_NAME=`cat $CONDA_FILE`
+            echo >&7 "\$(INST)/$PKG_VERSION:$DEPS"
+            echo >&7 "	+\$(A""M_V_at)sage-logger -p 'bash $SAGE_ROOT/conda_install.sh $CONDA_PKG_NAME $SAGE_LOCAL $PKG_VERSION' '\$(SAGE_LOGS)/$PKG_VERSION.log'"
+        else
+            echo >&7 "\$(INST)/$PKG_VERSION:$DEPS"
+            echo >&7 "	+\$(A""M_V_at)sage-logger -p '\$(SAGE_SPKG) $PKG_VERSION' '\$(SAGE_LOGS)/$PKG_VERSION.log'"
+            echo >&7
+        fi
 
         # Add a target with just the bare package name for "sage -i"
         echo >&7 "$PKG_NAME: \$(INST)/$PKG_VERSION"
